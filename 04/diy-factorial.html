@@ -9,16 +9,14 @@
 </head>
 <body>
 	<script>
-		var n = prompt("숫자를 입력하세요.", "10");
+		var number = prompt("숫자를 입력하세요.", "10");
 		var nFact = 1;
-		var i = 2;
 
-		while(i <= n) {
+		for (var i = 1; i <= number; i++) {
 			nFact *= i;
-			i++;
 		}
 
-		documen.write(n + "!= " + nFact);
+		document.write(`${number}! = ${nFact}`);
 	</script>
 </body>
 </html>
