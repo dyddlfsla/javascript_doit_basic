@@ -38,3 +38,43 @@
 
   document.getElementsByClassName("accent")[0].style.textDecoration = "underline";
 
+  ③ DOM 요소를 태그 이름으로 찾아내는 함수 - getElementsByTagName()
+  id 나 class 선택자가 있는 DOM 요소는 앞서 설명한 방법으로 접근하면 됩니다. 하지만 id 나 class 선택자가 없는 DOM 요소에는 어떻게 접근해야 할까요?
+  이 경우에는 getElementsByTagName() 함수를 사용하여 태그 이름을 찾아 DOM 요소에 접근하면 됩니다. 이 함수의 이름에도 's'가 붙어 있습니다.
+  즉 이 함수도 여러 DOM 요소를 모두 찾아 접근합니다.
+
+  document.getElementsByTagName("h2");
+
+  다음은 h2 태그 이름으로 접근한 DOM 요소 중 첫 번째 요소의 배경색을 바꾼 것입니다.
+  document.getElementsByTagName("h2")[0].style.color = "red";
+
+  ④ DOM 요소를 다양한 방법으로 찾아주는 함수 - querySelector(), querySelectorAll()
+
+  이번에는 id, class 값을 사용해도 되고 태그 이름을 사용해도 돠ㅣ는 querySelector() 함수와 querySelectorAll() 함수에 대해 알아봅니다.
+  두 함수는 접근하는 DOM 요소 개수에만 차이가 있을 뿐 사용 방법은 같습니다.
+
+  두 함수는 id, class 값을 사용해도 되고 태그 이름을 사용해도 됩니다. 그러나 id 나 class 는 어떻게 입력해야 할까요? CSS 선택자를 사용한 방법을
+  그대로 사용하면 됩니다. 즉 class 값 앞에는 마침표(.)를, id 값 앞에는 샵(#)을 붙입니다. 태그 이름은 기호 없이 태그 이름만 사용하면 됩니다.
+
+  ※ querySelector() 함수와 함께 class 선택자나 태그 이름을 사용할 때는 여러 요소 중 첫 번째 요소에만 접근할 수 있습니다.
+
+  document.querySelector("#heading"); //id 선택자
+  document.querySelectorAll(".accent"); // class 선택자
+
+  그런데 이번에 반환되는 값은 HTMLCollection 이 아니라 NodeList 입니다. 당황할 필요는 없습니다. NodeList 는 HTMLCollection 과 같은 방법으로
+  다룰 수 있습니다. 즉 NodeList 는 여러 개의 노드를 모아 놓은 것으로 배열과 비슷하다고 생각하면 됩니다.
+
+  document.querySelectorAll(".accent")[1].style.backgroundColor = "blue";
+
+  ※ getElementById() 함수와 querySelector() 함수의 차이
+  id 선택자가 있는 웹 요소에 접근할 때 getElementById() 함수와 querySelector() 함수 둘 다 사용할 수 있습니다.
+  그렇다면 이 두 함수의 차이는 무엇일까요?
+
+  getElementById(), getElementsByClassName(), getElementsByTagName() 함수에는 'Element' 라는 단어가 들어있습니다.
+  이름에서 알 수 있다 싶이 이 함수들은 DOM 의 노드 중에서 요소 노드까지만 접근할 수 있습니다. 반면에 querySelector() 함수는
+  요소 노드 뿐 아니라 텍스트 노드와 속성 노드까지 접근할 수 있습니다.
+  자바스크립트 프로그램에서 웹 요소 정도만 변경한다면 getElement~ 함수를 사용하면 되고 웹 요소 뿐만 아니라 요소의 텍스트나
+  속성을 변경, 새로운 노드를 추가하고 싶다면 querySelector() 함수를 사용합니다.
+
+
+
