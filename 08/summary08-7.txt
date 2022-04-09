@@ -1,0 +1,44 @@
+
+ ◆ 추가한 노드 순서 바꾸거나 삭제하기
+
+ 여기에서는 추가한 명단의 순서를 바꾸고 삭제하는 방법을 알아봅니다.
+
+ 1) 여러 노드를 한꺼번에 저장하는 노드 리스트
+ querySelectorAll() 함수를 사용해 여러 개의 노드를 한꺼번에 가져오면 3개의 p 노드가 한꺼번에 저장되는데,
+ 이것을 '노드 리스트' 라고 합니다. 배열 형식에 여러 값을 저장하듯 여러 노드가 하나의 변수에 저장된 것을 가리키죠.
+ document.querySelectorAll("p");
+
+
+ 2) DOM 트리를 활용해 원하는 노드 다루기
+
+ ① 자식 노드 확인하기 - hasChildNode() 함수
+ hasChildNode() 함수는 특정 노드에 자식 노드가 있는지 확인하는 함수입니다. 자식 노드가 있다면 true, 없다면 false 를 반환합니다.
+ document.querySelectorAll("p")[0].hasChildNodes();
+
+ ② 자식 노드에 접근하기 - childNodes 속성
+ 자식 노드가 있다면 childNodes 속성을 사용해서 현재 노드의 자식 노드에 접근할 수 있습니다. 이 때 요소 노드 뿐만 아니라
+ 태그와 태그 사이에 줄바꿈도 빈 텍스트 자식 노드로 인식합니다.
+ document.querySelector("#nameList").childNodes
+
+ ※ 요소 노드에만 접근하려면 children 속성을 사용하세요.
+ DOM 에서 childNodes 속성을 사용하면 요소 노드뿐만 아니라 텍스트 노드나 주석 노드까지 모두 접근할 수 있습니다. 만약 자식 노드 중에서
+ 텍스트 노드와 주석 노드는 필요하지 않고 요소 노드에만 접근한다면 children 속성을 사용하면 됩니다.
+ document.querySelector("#nameList").children
+
+ ③ 원하는 위치에 노드 삽입하기 - insertBefore() 함수
+ 자식 노드를 추가하는 appendChild() 함수는 부모 노드에 자식 노드가 있을 경우 마지막 자식 노드로 추가됩니다. 하지만 insertBefore() 함수를
+ 사용하면 부모 노드에 자식 노드를 추가할 때 기준이 되는 노드를 지정하고 그 앞에 자식 노드를 추가할 수 있습니다.
+ nameList.insertBefore(nameList.children[2], nameList.children[0]);
+
+ ④ 특정 노드 삭제하기 - removeChild() 함수와 parentNode() 함수
+ 앞서 노드를 추가하는 방법에 대해 확인했습니다. 추가할 수 있다면 삭제도 할 수 있을 것입니다. DOM 트리에 있는 노드를 삭제할 때는
+ removeChild() 함수를 사용합니다. 함수 이름에서 알 수 있듯이 부모 노드에게서 자식 노드를 삭제하는 함수이고, 괄호 안에는 삭제하려는 자식 노드가 들어갑니다.
+
+ 노드는 자기 자신을 스스로 삭제할 수 없기 때문에 부모 노드에 접근한 후 부모 노드에서 삭제해야 합니다. 그래서 특정 노드를 삭제하려고 할때는 그 노드의 부모 노드부터
+ 먼저 찾아야 합니다. 이때 부모 노드 정보를 가지고 있는 속성이 parentNode 속성입니다. parentNode 속성은 현재 노드의 부모 요소 노드를 반환합니다.
+
+ var firstDel = document.querySelectorAll(".del")[0]; // 삭제할 노드 확인
+ var firstP = document.querySelectorAll("p")[0]; // 특정 노드를 삭제하기 위해서는 우선 그 노드의 부모 노드부터 찾아야 한다.
+ firstP.removeChild(firstDel); // 부모 노드에서 removeChild() 함수를 사용해 자식 노드 삭제
+
+
