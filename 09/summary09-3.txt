@@ -1,0 +1,22 @@
+
+ ◆ 다양한 폼 요소 다루기
+
+ 지금까지는 텍스트 필드를 중심으로 폼 요소를 다루는 방법을 살펴보았습니다. 이제부터는 그 외의 폼 요소에 대해 알아봅니다.
+
+ <select>, <input type="radio">, <input type="checkbox">
+
+ 1) 선택 목록 및 옵션 항목에 접근하기
+
+ <select> 목록의 항목은 <option> 태그와 함께 사용하기 때문에, 자바스크립트에서 선택 목록에 접근하면 선택 목록에 있는 항목들은
+ 배열 형태로 저장됩니다. 옵션 항목에 접근하려면 options 속성을 사용합니다.
+
+ document.testForm.major.options 을 실행하면
+ 인덱스 0부터 6까지의 배열에 선택 목록의 항목(option)들이 들어있습니다.
+ 그리고 selectedIndex 에는 여러 옵션 중 사용자가 선택한 옵션의 인덱스 값이 저장됩니다.
+
+ 그리고 해당 옵션이 화면에 표시하고 있는 내용에 접근하고 싶다면 innerText 속성을 사용할 수 있습니다.
+
+ document.testForm.major.options[4].innerText
+
+
+
